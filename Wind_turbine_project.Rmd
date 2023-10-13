@@ -3,8 +3,8 @@ title: "Wind Turbine Project"
 author: "Marc-Eloi NICOD"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 editor_options: 
   markdown: 
     wrap: 72
@@ -91,9 +91,24 @@ advancing renewable energy forecasting.
 library(tidyverse)
 library(knitr)
 
-file_path <- "C:\\Users\\mnicod\\OPSEALOG\\Document Marc Eloi - Documents\\DS\\R_F_P\\R80711.csv"
+# Get the current working directory
+current_dir <- getwd()
 
-wind_turbine <- read.csv(file_path)
+# Construct the path to the zip file
+zip_file_path <- file.path(current_dir, "R80711.zip")
+
+# Unzip the file in the current directory
+unzip(zip_file_path, exdir = current_dir)
+
+# Construct the path to the CSV file inside the zip
+csv_file_path <- file.path(current_dir, "R80711.csv")
+
+# Read the CSV file
+wind_turbine <- read.csv(csv_file_path)
+
+# View the first few rows of the data
+head(wind_turbine)
+
 ```
 
 We start with a exploratory analysis of the wind_turbine data set to
